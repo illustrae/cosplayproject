@@ -18,9 +18,16 @@
     padding-right: 10px;
 }
 .registration {
-    display: flexbox;
-    width: 50%;
-    margin-left: 100px;
+    display:inline-flexbox;
     background-color: #140038;
-
+    margin: auto;
+    width: 33%;
+    align-items: center;
 }
+#regbtn {
+     justify-content: center;
+     border-width: 2px;
+     border-style: solid;
+     border-color: white;
+     margin-left: 50%;
+ }
