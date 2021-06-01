@@ -3,6 +3,7 @@
 * {
     color: white;
     background-color: #140038;
+    font-family: Poppins;
 }
 .navbar {
     background-color: #140038;
@@ -23,7 +24,8 @@
     margin: auto;
     width: 50%;
 }
-h2 {
+h2, {
+    color: white;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -41,3 +43,8 @@ h2 {
 
 
 }
+
+
+
+
+

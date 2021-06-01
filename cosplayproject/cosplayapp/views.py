@@ -31,22 +31,25 @@ def users(request):
     return redirect('/dashboard/')
 # login validations
 def login(request):
-    user = User.objects.filter(email = request.POST['email'])
+    user = User.objects.filter(username = request.POST['username'])
     if user:
-        userEmail = user[0]
-        if bcrypt.checkpw(request.POST['password'].encode(), userEmail.password.encode()):
-            request.session['user_id'] = userEmail.id
+        userLogin = user[0]
+        if bcrypt.checkpw(request.POST['password'].encode(), userLogin.password.encode()):
+            request.session['user_id'] = userLogin.id
             return redirect('/dashboard/')
         messages.error(request, 'Invalid Credentials')
         return redirect('/')
-    messages.error(request, 'The email is not in our system, please register for an account')
+    messages.error(request, 'The username is not in our system, please register for an account')
     return redirect('/')
 
 def dashboard(request):
     if 'user_id' not in  request.session:
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
-    return render(request, 'dashboard.html')
+    context = {
+        'username': user,
+    }
+    return render(request, 'dashboard.html', context)
 
 # log out of application
 def logout(request):
