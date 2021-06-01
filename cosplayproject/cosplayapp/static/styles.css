@@ -5,3 +5,13 @@
 .navbar {
     background-color: #140038;
 }
+.footer footer {
+    text-align: center;
+    padding: 5px;
+
+}
+.main label {
+    font-size: 14px;
+    display: inline;
+    padding-right: 10px;
+}

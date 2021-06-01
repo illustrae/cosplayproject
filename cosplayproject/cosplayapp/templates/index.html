@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link href="./static/styles.css" rel="stylesheet">
+    <link href="static/styles.css" rel="stylesheet">
    
         <title></title>
 
@@ -23,23 +23,30 @@
             <a class='navbar-brand'>COSPLAY CENTRAL</a>
             <form class='form-inline' action='/login/' method='POST'>
                 {% csrf_token %}
-                    <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label="Username">
-                    <input class='form-control mr-sm-2' type='password' id='password' placeholder='Password'>
+                    
+                    <input class='form-control mr-sm-2' name='username' id='username' type='text' placeholder='Username'>
+                    <label for='username'> <a href='/register'> Sign up </a></label>
+                    <input class='form-control mr-sm-2' name='password' type='password' id='password' placeholder='Password'>
+                    <label for='password'> <a href=''> Forgot password? </a></label>
                     <button class='btn btn-outline-light my-2 my-sm-0' type='submit'> Login </button>
-                    {% if messages %}
-                        <section class="messages">
-                        {% for message in messages %}
-                            <h4 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
-                    {% endfor %}
-                        </section>
-                {% endif %}
+                    <!-- {% if messages %} -->
+                        <!-- <section class="messages"> -->
+                        <!-- {% for message in messages %} -->
+                            <!-- <h4 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4> -->
+                    <!-- {% endfor %} -->
+                        <!-- </section> -->
+                <!-- {% endif %} -->
             </form>
-                    </div>
         </nav>
+    </div>
     </div>
     <div class='jumbotron jumbotron-fluid'>
         <div class='container'>
             <img class='mx-auto d-block img-fluid city01' id='city01' src='./Images/city1.png' alt='cosplayLogin'>
-        </div>    
+        </div>
+    </div>
+    <div class='footer'>
+        <footer> this is going to be a footer </footer>
+    </div>    
 </body>
 </html>

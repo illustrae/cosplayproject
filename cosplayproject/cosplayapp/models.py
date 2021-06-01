@@ -8,17 +8,19 @@ class UserManager(models.Manager):
     def validate(self, form):
         errors = {}
         if len(form['first_name']) < 2:
-            errors['first_name'] = 'Please have at least 2 characters in the show name'
+            errors['first_name'] = 'Please have at least 2 characters in the first name'
         if len(form['last_name']) < 2:
-            errors['last_name'] = 'Please have at least 2 characters in the show name'
+            errors['last_name'] = 'Please have at least 2 characters in the last name'
         
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(form['email']):
             errors['email'] = 'Invalid Email Format'
-        
         emailCheck = self.filter(email=form['email'])
         if emailCheck:
-            errors['email'] = 'Email address is already in use'
+            errors['email'] =  'Email is already in use'
+        userNameCheck = self.filter(username=form['username'])
+        if userNameCheck:
+            errors['username'] = 'Username is already in use'
         if len (form['password']) < 8:
             errors['password'] = 'Password must be at least 5 characters long'
         if form['password'] != form['confirm_pw']:
@@ -29,11 +31,17 @@ class UserManager(models.Manager):
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
+    username = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=45)
     confirm_pw = models.CharField(max_length=45)
     objects = UserManager()
-
+    
+    userCreatedAt = models.DateTimeField(auto_now_add=True)
+    userUpdatedAt = models.DateTimeField(auto_now=True)
+    
 class Login(models.Model):
-    username = models.CharField(max_length=45)
+    username = models.CharField(max_length=255)
     password = models.CharField(max_length=45)
+
+

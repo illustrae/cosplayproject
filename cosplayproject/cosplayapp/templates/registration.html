@@ -11,12 +11,63 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link href="./css/styles.css" rel="stylesheet">
+    <link href="static/styles.css" rel="stylesheet">
    
         <title></title>
 
 </head>
 <!--Repository link (https://github.com/illustrae/cosplayproject.git)-->
 <body>
+    <div class='main'>
+        <nav class='navbar justify-content-between'>
+            <a class='navbar-brand'>COSPLAY CENTRAL</a>
+
+
+        </nav>
+        {% if messages %}
+        <section class="messages">
+            {% for message in messages %}
+            <h4 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+            {% endfor %}
+        </section>
+        {% endif %}
+        
+        <div class = "registration" id="registration">
+            <h2> Registration </h2>
+            <form action = "/newUser/" method="POST">
+                {% csrf_token %}
+            <div class="form">
+                <label class="username" for="username"> Username </label>
+                <input name="username" id="username" class="form-control">
+            </div>    
+            <div class="form">
+                <label class="first_name" for="first_name"> First Name </label>
+                <input name="first_name" id="first_name" class="form-control">
+            </div>
+            <div class="form">
+                <label class="last_name" for="last_name"> Last Name </label>
+                <input name="last_name" id="last_name" class="form-control">
+            </div>
+            <div class="form">
+                <label class="email" for="email"> Email </label>
+                <input name="email" id="email" type="email" class="form-control">
+            </div>
+            <div class="form">
+                <label class="password" for="password"> Password </label>
+                <input name="password" id="password" type="password" class="form-control">
+            </div>
+            <div class="form">
+                <label class="confirm_pw" for="confirm_pw"> Confirm Password </label>
+                <input name="confirm_pw" id="confirm_pw" type="password" class="form-control">
+            </div>
+        </div>
+                <button id='btn' type="submit"> Submit </button>
+        </form>
+
+
+    </div>
+    </div>
+        <footer> this is going to be a footer </footer>
+    </div>    
 </body>
 </html>
