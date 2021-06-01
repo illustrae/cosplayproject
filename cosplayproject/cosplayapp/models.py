@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
 import re
+from django.db.models.deletion import CASCADE
 
 alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$',  'Only alphanumeric characters are allowed.')
 
@@ -9,20 +10,25 @@ class UserManager(models.Manager):
         errors = {}
         if len(form['first_name']) < 2:
             errors['first_name'] = 'Please have at least 2 characters in the first name'
+        
         if len(form['last_name']) < 2:
             errors['last_name'] = 'Please have at least 2 characters in the last name'
         
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        
         if not EMAIL_REGEX.match(form['email']):
             errors['email'] = 'Invalid Email Format'
+        
         emailCheck = self.filter(email=form['email'])
         if emailCheck:
             errors['email'] =  'Email is already in use'
-        userNameCheck = self.filter(username=form['username'])
-        if userNameCheck:
-            errors['username'] = 'Username is already in use'
-        if len (form['password']) < 8:
+        usernameCheck = self.filter(username=form['username'])
+        if usernameCheck:
+            errors['username'] = 'Username already in use'
+        
+        if len (form['password']) < 5:
             errors['password'] = 'Password must be at least 5 characters long'
+        
         if form['password'] != form['confirm_pw']:
             errors['password'] = 'Password does not match'
         
@@ -36,7 +42,6 @@ class User(models.Model):
     password = models.CharField(max_length=45)
     confirm_pw = models.CharField(max_length=45)
     objects = UserManager()
-    
     userCreatedAt = models.DateTimeField(auto_now_add=True)
     userUpdatedAt = models.DateTimeField(auto_now=True)
     

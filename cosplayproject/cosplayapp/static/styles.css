@@ -10,6 +10,7 @@
 .footer footer {
     text-align: center;
     padding: 5px;
+    padding-top: 45px;
 
 }
 .main label {
@@ -18,16 +19,25 @@
     padding-right: 10px;
 }
 .registration {
-    display:inline-flexbox;
-    background-color: #140038;
+    display: inline-flexbox;
     margin: auto;
-    width: 33%;
-    align-items: center;
+    width: 50%;
 }
-#regbtn {
-     justify-content: center;
-     border-width: 2px;
-     border-style: solid;
-     border-color: white;
-     margin-left: 50%;
- }
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.main2 label {
+    font-size: 12px;
+    margin-top: 10px;
+}
+.term, .regbtn {
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    margin-top: 10px;
+    font-size: 14px;
+
+
+}
