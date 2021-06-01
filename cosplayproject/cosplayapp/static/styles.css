@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&dislay=swap');
+
 * {
     color: white;
     background-color: #140038;
@@ -14,4 +16,11 @@
     font-size: 14px;
     display: inline;
     padding-right: 10px;
+}
+.registration {
+    display: flexbox;
+    width: 50%;
+    margin-left: 100px;
+    background-color: #140038;
+
 }

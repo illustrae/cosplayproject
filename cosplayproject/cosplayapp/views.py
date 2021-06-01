@@ -29,7 +29,7 @@ def newUser(request):
     if errors:
         for err in errors.values():
             messages.error(request, err)
-        return redirect('/register/')
+        return redirect('register')
     hashedPW = bcrypt.hashpw(request.POST['password'].eencode(), bcrypt.gensalt()).decode()
     newUser.objects.create(
         username = request.POST['username'],
