@@ -47,7 +47,7 @@ def dashboard(request):
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
     context = {
-        'username': user,
+        'user': user,
     }
     return render(request, 'dashboard.html', context)
 
