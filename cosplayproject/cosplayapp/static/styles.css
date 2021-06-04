@@ -5,8 +5,9 @@
     background-color: #140038;
     font-family: Poppins;
 }
-.navbar {
+.navbar, .container {
     background-color: #140038;
+
 }
 .footer footer {
     text-align: center;
@@ -41,9 +42,11 @@ h2, {
     margin-top: 10px;
     font-size: 14px;
 
-
 }
-
+.rounded-circle {
+    max-width:50%;
+    height: auto;
+}
 
 
 
