@@ -47,28 +47,38 @@ h2 {
     max-width:50%;
     height: auto;
 }
-.row #firstRow{
-    background-color: #1b004e;
-    width: 100%;
-}
-.card {
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 2rem;
+.wrap {
 
-}
-.card-body {
+    display: flex;
+    width: 100%;
     border-style: solid;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.205);
-    background-color: #1b004e;
+}
+#firstRow {
+    width: 100%;
+    display: flexbox;
+    align-content: justify;
+}
+#secondRow {
+    width: 100%;
+    margin-top: 2rem;
+    border-style: solid;
+}
+#cosUser {
+    border-style: solid;
+    margin: 1rem;
+    display: inline-flex;
     
 }
-.card-text {
-    background-color: #1b004e;
-    color: purple;
+#news, #newDay {
+    border-style: solid;
 }
-.card-deck {
-    min-width: auto;
+#newDayImage {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+.imageNew {
+    width: 75%;
+    height: auto;
 }
