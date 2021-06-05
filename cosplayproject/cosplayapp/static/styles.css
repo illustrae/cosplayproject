@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&dislay=swap');
-
+/* login and navbar area */
 * {
     color: white;
     background-color: #140038;
@@ -25,7 +25,7 @@
     margin: auto;
     width: 50%;
 }
-h2, {
+h2 {
     color: white;
     text-align: center;
     margin-top: 10px;
@@ -41,13 +41,34 @@ h2, {
     align-content: space-around;
     margin-top: 10px;
     font-size: 14px;
-
+/* Dashboard nav and card */
 }
 .rounded-circle {
     max-width:50%;
     height: auto;
 }
+.row #firstRow{
+    background-color: #1b004e;
+    width: 100%;
+}
+.card {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
 
-
-
-
+}
+.card-body {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.205);
+    background-color: #1b004e;
+    
+}
+.card-text {
+    background-color: #1b004e;
+    color: purple;
+}
+.card-deck {
+    min-width: auto;
+}
