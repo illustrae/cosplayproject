@@ -41,17 +41,25 @@ h2 {
     align-content: space-around;
     margin-top: 10px;
     font-size: 14px;
-/* Dashboard nav and card */
+
 }
 .rounded-circle {
-    max-width:50%;
-    height: auto;
+    width: 58px;
+    height: 58px;
 }
+header {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    color: gold;
+    font-weight: 600;
+}
+/* Dashboard divs */
+
 .wrap {
 
     display: flex;
     width: 100%;
-    border-style: solid;
 }
 #firstRow {
     width: 100%;
@@ -61,24 +69,34 @@ h2 {
 #secondRow {
     width: 100%;
     margin-top: 2rem;
-    border-style: solid;
 }
 #cosUser {
     border-style: solid;
+    border-width: thin;
+    border-color: #ffffff1f;
     margin: 1rem;
     display: inline-flex;
     
 }
 #news, #newDay {
     border-style: solid;
+    border-width: thin;
+    border-color: #ffffff1f;
+    background-color: #0f002c;
+    margin-left: 2rem;
 }
 #newDayImage {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
     margin-bottom: 3rem;
+    background-color: #0f002c;
 }
 .imageNew {
-    width: 75%;
+    width: 50%;
     height: auto;
+}
+.header {
+    display: flex;
+    margin-top: 1rem;
 }

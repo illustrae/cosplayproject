@@ -58,11 +58,11 @@
         </li>
         <li class='nav-item avatar dropdown'>
             <a class='nav-link dropdown-toggle' id='navbarDropdown2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                <img src='{{user.image}}' class='rounded-circle img-fluid' alt='avatar image'>
+                <img src='https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png' class='rounded-circle img-fluid' alt='avatar image'>
             </a>
-            <div class='dropdown-menu dropdown-menu-lg-left dropdown-secondary' aria-labelledby='navbarDropdown2'>
+            <div class='dropdown-menu dropdown-menu-md-left dropdown-secondary' aria-labelledby='navbarDropdown2'>
                 <a class='dropdown-item' href='#'>Profile</a>
-                <a class='dropdown-item' href='#'>Account Settings</a>
+                <a class='dropdown-item' href='#'>Account</a>
                 <a class='dropdown-item' href='/logout/'>Logout</a>
             </div>
         </li>
@@ -70,19 +70,24 @@
 </div>
 </nav>
 <!--/.Navbar -->
-<div class='wrap col-lg-8 mx-auto' id='container1'>
+
+<header>TOP OF THE HOUR</header>
+<div class='wrap col-lg-12 mx-auto' id='container1'>
     <div class='row justify-content-between mx-auto' id='firstRow'>
-        <div class="col-lg-2" id='cosUser'>text</div>
-        <div class="col-lg-2" id='cosUser'>text</div>
-        <div class="col-lg-2" id='cosUser' >text</div>
-        <div class="col-lg-2" id='cosUser'>text</div>
-        <div class="col-lg-2" id='cosUser'>text</div>
+        <div class="col-lg-2" id='cosUser'>User Image</div>
+        <div class="col-lg-2" id='cosUser'>User Image</div>
+        <div class="col-lg-2" id='cosUser' >User Image</div>
+        <div class="col-lg-2" id='cosUser'>User Image</div>
+        <div class="col-lg-2" id='cosUser'>User Image</div>
     </div>
 </div>
 
-<div class='container col-lg-8' id='container2'>
+<div class='container col-lg-12' id='container2'>
     <div class='row mx-auto' id='secondRow'>
-        <div class='col-lg-8' id='news'>col-sm-3</div>
+        <div class='col-lg-7 justify-content-between' id='news'>
+            <h1 class='header'>In the news...</h1>
+            Testing area of what will be populated here... 
+        </div>
         <div class='col-lg-4' id='newDay'>Welcome, {{user.username}}.<br>
             <div class='container' id='newDayImage'>
                 <img src='https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png' class='imageNew'>
