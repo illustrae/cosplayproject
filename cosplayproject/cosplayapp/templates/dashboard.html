@@ -12,7 +12,7 @@
     <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>  
-    <link rel='stylesheet' href='{% static 'styles.css' %}'>
+    <link rel='stylesheet' href='{% static 'css/styles.css' %}'>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
         <title></title>
@@ -71,6 +71,7 @@
 </nav>
 <!--/.Navbar -->
 
+<!-- header of the top five users of the hour -->
 <header>TOP OF THE HOUR</header>
 <div class='wrap col-lg-12 mx-auto' id='container1'>
     <div class='row justify-content-between mx-auto' id='firstRow'>
@@ -82,19 +83,26 @@
     </div>
 </div>
 
+<!-- In the news section and the new members of the day. -->
 <div class='container col-lg-12' id='container2'>
     <div class='row mx-auto' id='secondRow'>
-        <div class='col-lg-7 justify-content-between' id='news'>
-            <h1 class='header'>In the news...</h1>
+        <div class='col-lg-8 justify-content-between' id='news'>
+            <h1 class='news1'>In the news...</h1>
             Testing area of what will be populated here... 
         </div>
-        <div class='col-lg-4' id='newDay'>Welcome, {{user.username}}.<br>
+        <div class='col-lg-3' id='newDay'>Welcome, {{user.username}}.<br>
             <div class='container' id='newDayImage'>
                 <img src='https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png' class='imageNew'>
             </div>
         </div>
     </div>
 </div>
+<!-- jumbotron for character info -->
+<div class='jumbotron'>
+        <h3>Get to know this Character...</h3>
+
+</div>
+
 
 </body>
 </html>

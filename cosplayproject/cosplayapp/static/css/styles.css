@@ -96,7 +96,11 @@ header {
     width: 50%;
     height: auto;
 }
-.header {
+.news1 {
     display: flex;
     margin-top: 1rem;
+}
+.jumbotron {
+    margin-top: 4rem;
+    background-color: rgba(138, 0, 46, 0.795);
 }

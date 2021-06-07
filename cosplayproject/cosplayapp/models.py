@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 import re
 from django.db.models.deletion import CASCADE
+from django.contrib.auth.models import User
 
 alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$',  'Only alphanumeric characters are allowed.')
 
@@ -35,6 +36,7 @@ class UserManager(models.Manager):
         return errors
 
 class User(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     username = models.CharField(max_length=255)
