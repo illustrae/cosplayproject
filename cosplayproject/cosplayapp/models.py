@@ -36,7 +36,6 @@ class UserManager(models.Manager):
         return errors
 
 class User(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     username = models.CharField(max_length=255)
@@ -46,7 +45,16 @@ class User(models.Model):
     objects = UserManager()
     userCreatedAt = models.DateTimeField(auto_now_add=True)
     userUpdatedAt = models.DateTimeField(auto_now=True)
-    
+
+class Profile(models.Model):
+    location = models.CharField(max_length=45)
+    age = models.IntegerField(max_length=2)
+    fav_character = models.CharField(max_length=45)
+    about_me = models.TextField()
+    user = models.ForeignKey(User, default=None)
+    profileUpdated = models.DateTieField(auto_now=True)
+
+
 class Login(models.Model):
     username = models.CharField(max_length=255)
     password = models.CharField(max_length=45)

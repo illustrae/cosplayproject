@@ -13,63 +13,72 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>  
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
         <title></title>
 
 </head>
 <!--Repository link (https://github.com/illustrae/cosplayproject.git)-->
 <body>
-    <div class='main2'>
-        <nav class='navbar justify-content-between'>
-            <a class='navbar-brand'>COSPLAY CENTRAL</a>
+    <div class='main'>
+        <!-- Navbar -->
+        <nav class='mb-1 navbar navbar-expand-lg navbar-dark secondary-color lighten-1'>
+            <a class='navbar-brand' href='#'>Cosplay Central</a>
+                <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarContent' aria-controls='navbarContent' aria-expanded='false' aria-label='Toggle navigation'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+    <div class='collapse navbar-collapse' id='navbarContent'>
+        <ul class='navbar-nav mr-auto'>
+            <li class='nav-item active'>
+                <a class='nav-link' href='#'>Home
+                    <span class='sr-only'>(current)</span>
+                </a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='#'>Characters</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='#'>Events</a>
+        </li>
+        <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' id='navbarDropdown' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Members
+            </a>
+            <div class='dropdown-menu dropdown-secondary' aria-labelledby='navbarDropdown'>
+                <a class='dropdown-item' href='#'>Forum</a>
+                <a class='dropdown-item' href='#'>Backpack</a>
+            </div>
+        </li>
+    </ul>
+    <ul class='navbar-nav ml-auto nav-flex-icons'>
+        <li class='nav-item'>
+            <a class='nav-link waves-effect waves-light'>1
+                <i class='fas fa-envelope'></i>
+            </a>
+        </li>
+        <li class='nav-item avatar dropdown'>
+            <a class='nav-link dropdown-toggle' id='navbarDropdown2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                <img src='https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png' class='rounded-circle img-fluid' alt='avatar image'>
+            </a>
+            <div class='dropdown-menu dropdown-menu-md-left dropdown-secondary' aria-labelledby='navbarDropdown2'>
+                <a class='dropdown-item' href='/userProfile/'>Profile</a>
+                <a class='dropdown-item' href='#'>Account</a>
+                <a class='dropdown-item' href='/logout/'>Logout</a>
+            </div>
+        </li>
+    </ul>
+</div>
+</nav>
+<!--/.Navbar -->
 
+    <div class = 'userProfile' id='userProfile'>
+        <h1>{{user.username}} Profile </h1>
+        <img src=''>
+        <h4>Age: {{profile.age}}</h4>
+        <h4>Fav Character: {{profile.fav_character}}</h4>
+        <h4>About Me: {{profile.about_me}}</h4>
+    </div>
+    <div><a href='/editProfile/'>Edit Profile</a></div>
 
-        </nav>
-        
-        <div class = 'registration' id='registration'>
-            <h2> Registration </h2>
-            <form action = '/newUser/' method='POST' onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
-                {% csrf_token %}
-            <div class='form'>
-                <label class='username' for='username'> Username </label>
-                <input name='username' id='username' class='form-control'>
-            </div>    
-            <div class='form'>
-                <label class='first_name' for='first_name'> First Name </label>
-                <input name='first_name' id='first_name' class='form-control'>
-            </div>
-            <div class='form'>
-                <label class='last_name' for='last_name'> Last Name </label>
-                <input name='last_name' id='last_name' class='form-control'>
-            </div>
-            <div class='form'>
-                <label class='email' for='email'> Email </label>
-                <input name='email' id='email' type='email' class='form-control'>
-            </div>
-            <div class='form'>
-                <label class='password' for='password'> Password </label>
-                <input name='password' id='password' type='password' class='form-control'>
-            </div>
-            <div class='form'>
-                <label class='confirm_pw' for='confirm_pw'> Confirm Password </label>
-                <input name='confirm_pw' id='confirm_pw' type='password' class='form-control'>
-            </div>
-        </div>
-            <div class='term'>
-                <input type="checkbox" name="checkbox" value="check" id="agree"/> <i>  I have read and agree to the Terms and Conditions and Privacy Policy</i>
-            </div>
-            <div class='regbtn'>
-            <button class='btn btn-outline-light' id='regbtn' type='submit'> Submit </button></div>
-        </form>
-        {% if messages %}
-        <section class='messages'>
-            {% for message in messages %}
-            <h4 {% if message.tags %} class='{{ message.tags }}'{% endif %}>{{ message }}</h4>
-            {% endfor %}
-        </section>
-        {% endif %}
-
-        </div>
 </body>
     <div class='footer'><footer> Copyright 2021 </footer></div>
 </html>

@@ -51,6 +51,16 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
+def userProfile(request):
+    if 'user_id' not in  request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+    'user': user,
+    }
+    return render(request, 'profile.html', context)
+
+    
 # log out of application
 def logout(request):
     request.session.clear()
