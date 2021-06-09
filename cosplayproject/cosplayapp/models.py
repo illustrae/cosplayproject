@@ -47,13 +47,14 @@ class User(models.Model):
     userUpdatedAt = models.DateTimeField(auto_now=True)
 
 class Profile(models.Model):
+    user = models.ForeignKey(User, unique=True, on_delete=CASCADE)
     location = models.CharField(max_length=45)
-    age = models.IntegerField(max_length=2)
+    age = models.IntegerField()
     fav_character = models.CharField(max_length=45)
     about_me = models.TextField()
-    user = models.ForeignKey(User, default=None)
-    profileUpdated = models.DateTieField(auto_now=True)
-
+    profile_picture = models.ImageField(upload_to='thumbpath', blank=True)
+    def __unicode__(self):
+        return u'Profile of user: %s' % self.user.username
 
 class Login(models.Model):
     username = models.CharField(max_length=255)
