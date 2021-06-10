@@ -36,7 +36,6 @@ class UserManager(models.Manager):
         return errors
 # 
 class User(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=45, null=True)
     last_name = models.CharField(max_length=45, null=True)
     username = models.CharField(max_length=255, null=True)
@@ -49,6 +48,16 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=45)
+    favorite = models.CharField(max_length= 255)
+    about = models.TextField()
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 class Message(models.Model):
     message = models.TextField()
