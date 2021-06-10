@@ -3,10 +3,12 @@
 
     <div class = 'userProfile' id='userProfile'>
         <h2> {{ user.username }} </h2>
-        <img class='rounded-circle account-img' src='{{ user.profile.image.url }}'>
-        <h4>Location: {{ user.profile.location }}</h4>
-        <h4>Fav Character: {{ user.profile.favorite}}</h4>
-        <h4>About Me: {{ user.profile.about}}</h4>
+        <div class='media'>
+            <img class='rounded-circle account-img' src='{{ user.profile.image.url }}'>
+        </div>
+        <h6>Location: {{ user.profile.location }}</h6>
+        <h6>Fav Character: {{ user.profile.favorite}}</h6>
+        <h6>About Me: {{ user.profile.about}}</h6>
     </div>
 
 {% endblock content %}
