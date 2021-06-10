@@ -6,4 +6,3 @@ class CosplayappConfig(AppConfig):
 
     def ready(self):
         import cosplayapp.signals
-

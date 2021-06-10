@@ -11,7 +11,7 @@ urlpatterns = [
     path('userProfile/', views.userProfile ),
     path('dashboard/', views.dashboard),
     path('logout/', views.logout),
-    
+
 ]
 
 if settings.DEBUG:

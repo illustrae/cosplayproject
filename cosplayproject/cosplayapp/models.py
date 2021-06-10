@@ -3,6 +3,8 @@ from django.core.validators import RegexValidator
 import re
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
 # 
 alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$',  'Only alphanumeric characters are allowed.')
 
@@ -50,14 +52,18 @@ class User(models.Model):
         return self.username
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=45)
-    favorite = models.CharField(max_length= 255)
-    about = models.TextField()
+    user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+    location = models.CharField(max_length=45, null=True)
+    favorite = models.CharField(max_length=255, null=True)
+    about = models.TextField(null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
-    def __str__(self):
-        return f'{self.user.username} Profile'
+def create_user_profile(sender, instance, created, **kwargs):
+    
+    if created:
+        User.objects.create(user=instance)
+        post_save.connect(create_user_profile, sender=User)
+
 
 class Message(models.Model):
     message = models.TextField()

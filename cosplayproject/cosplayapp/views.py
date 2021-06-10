@@ -6,9 +6,11 @@ import bcrypt
 # Home Login Page
 def home(request):
     return render(request, 'index.html')
+    
 # registration form
 def newUser(request):
     return render(request, 'registration.html')
+
 # user register form
 def users(request):
     if request.method == "GET":
