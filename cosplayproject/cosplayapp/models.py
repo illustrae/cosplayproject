@@ -23,7 +23,7 @@ class UserManager(models.Manager):
         emailCheck = self.filter(email=form['email'])
         if emailCheck:
             errors['email'] =  'Email is already in use'
-        usernameCheck = self.filter(user=form['username'])
+        usernameCheck = self.filter(username =form['username'])
         if usernameCheck:
             errors['username'] = 'Username already in use'
         # 
@@ -36,6 +36,7 @@ class UserManager(models.Manager):
         return errors
 # 
 class User(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=45, null=True)
     last_name = models.CharField(max_length=45, null=True)
     username = models.CharField(max_length=255, null=True)
@@ -52,10 +53,12 @@ class User(models.Model):
 class Message(models.Model):
     message = models.TextField()
     postUser = models.ForeignKey(User, related_name='user_messages', null=True, on_delete=models.CASCADE)
+    message_likes = models.ManyToManyField(User, related_name='message_likes')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 class Comment(models.Model):
     comment = models.TextField()
+    comment_likes = models.ManyToManyField(User, related_name='comment_likes')
     postUser = models.ForeignKey(User, related_name='user_comments', null=True, on_delete=models.CASCADE)
     wallPost = models.ForeignKey(Message, related_name='post_comments', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

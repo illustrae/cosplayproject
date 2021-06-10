@@ -28,7 +28,7 @@ def users(request):
         confirm_pw = hashedPW,
     )
     request.session['user_id'] = newUser.id
-    return redirect('/createProfile/')
+    return redirect('/dashboard/')
 # login validations
 def login(request):
     user = User.objects.filter(username = request.POST['username'])
@@ -51,14 +51,14 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
-# def userProfile(request):
-    # if 'user_id' not in  request.session:
-        # return redirect('/')
-    # user = User.objects.get(id=request.session['user_id'])
-    # context = {
-    # 'user': user,
-    # }
-    # return render(request, 'profile.html', context)
+def userProfile(request):
+    if 'user_id' not in  request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+    'user': user,
+    }
+    return render(request, 'profile.html', context)
 
 # log out of application
 def logout(request):
