@@ -70,12 +70,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 class Message(models.Model):
     message = models.TextField()
     poster = models.ForeignKey(User, related_name='user_messages', null=True, on_delete=models.CASCADE)
-    message_likes = models.ManyToManyField(User, related_name='liked_posts')
+    user_likes = models.ManyToManyField(User, related_name='liked_posts')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 class Comment(models.Model):
     comment = models.TextField()
-    comment_likes = models.ManyToManyField(User, related_name='comment_likes')
     poster = models.ForeignKey(User, related_name='user_comments', null=True, on_delete=models.CASCADE)
     wall_message = models.ForeignKey(Message, related_name='post_comments', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -104,3 +104,41 @@ header {
     margin-top: 4rem;
     background-color: rgba(138, 0, 46, 0.795);
 }
+
+/* this section is for the wall */
+
+#mainWall {
+    border-style: solid;
+    border-width: thin;
+    border-color: #ffffff1f;
+    background-color: #5f0612;
+    display: inline-flexbox;
+    margin: auto;
+    width: 75%;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+#mainWall #wallP {
+    width: 100%;
+    height:150px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #ffffff1f;
+    resize: none;
+
+}
+
+#mainWall #postbtn {
+    margin-bottom: 2rem;
+    width: 100%;
+    border: none;
+    background-color: rgba(138, 0, 46, 0.795);
+}
+
+#mainWall .poster {
+    display:flexbox;
+    width: 100%;
+    background-color: #5f0612;
+
+}

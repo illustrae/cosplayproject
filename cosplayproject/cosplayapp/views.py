@@ -109,9 +109,16 @@ def comment(request, id):
 def add_like(request, id):
     liked_message = Message.objects.get(id=id)
     user_liking = User.objects.get(id=request.session['user_id'])
-    liked_message.message_likes.add(user_liking)
+    liked_message.user_likes.add(user_liking)
 
     return redirect('/forum/')
+
+def delete(redirect, id):
+    destroyed = Comment.objects.get(id=id)
+    destroyed.delete()
+    return redirect('/forum/')
+
+
 # log out of application
 def logout(request):
     request.session.clear()

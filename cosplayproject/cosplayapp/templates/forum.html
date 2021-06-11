@@ -2,22 +2,27 @@
 {% block content %}
 
 
-<div class='main'>
-    <div class = "write" id ="write">
-        <h2>Write a Post:</h2>
-            <form action='/wall' method=POST>
-            {% csrf_token %}
-            <input type ="text" name='mess'>
-            <input type="submit" value="Post">
+<div class='mainWall' id='mainWall'>
+        <h2 id='forWall'>The Board</h2>
+        <!-- Post a message input form -->
+        <form action='/wall' method=POST id='wall1'>
+        {% csrf_token %}
+        <textarea rows='5' type="text" label='Write' name='mess' id='wallP'>Write a message..</textarea>
+        <input type="submit" value="Post" id='postbtn'>
         </form>
-    </div>
+
+
 <div id="posts">
     {% for post in messages %}
         <div class='one_post'>
-            <p class='post'>{{post.message}}</p>
-            <p class='poster'>By: <a href='/userProfile/{{post.poster.id}}'> {{post.poster.first_name}} {{post.poster.last_name}} </a></p>
-                <a href='/like/{{post.id}}'> Like</a>
-            <p>{{post.user_liking.count}}</p>
+        <p class='post'>{{post.message}}</p>
+        </div>
+        <div id='posted1'>
+            <p class='poster'>{{post.user_likes.count}} <a href='/like/{{post.id}}'> Like </a>
+        posted by: <a href='/userProfile/{{post.poster.id}}'> {{post.poster.username}} </a></p>
+            
+
+            
 
         <form action='/add_comment/{{post.id}}' method=POST>
             {% csrf_token %}
@@ -27,7 +32,7 @@
 
             {% for comment in post.post_comments.all %}
                 <p> {{comment.comment}}</p>
-                <p> poster: {{comment.poster.first_name}} {{comment.poster.last_name}}</p>
+                <p> poster: {{comment.poster.username}}</p>
                 <a href="/delete/{{comment.id}}">Delete</a>
             {% endfor %}
         </div>
