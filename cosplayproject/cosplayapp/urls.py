@@ -12,6 +12,11 @@ urlpatterns = [
     path('editProfile/', views.editProfile),
     path('userProfile/', views.userProfile ),
     path('dashboard/', views.dashboard),
+    path('forum/', views.forum),
+    path('wall', views.message),
+    path('add_comment/<int:id>', views.comment),
+    path('like/<int:id>', views.add_like),
+    path('delete/<int:id>', views.delete),
     path('logout/', views.logout),
 
 ]

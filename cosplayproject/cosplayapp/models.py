@@ -4,7 +4,6 @@ import re
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-
 # 
 alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$',  'Only alphanumeric characters are allowed.')
 
@@ -61,6 +60,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+
 def create_user_profile(sender, instance, created, **kwargs):
     
     if created:
@@ -69,15 +69,15 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 class Message(models.Model):
     message = models.TextField()
-    postUser = models.ForeignKey(User, related_name='user_messages', null=True, on_delete=models.CASCADE)
-    message_likes = models.ManyToManyField(User, related_name='message_likes')
+    poster = models.ForeignKey(User, related_name='user_messages', null=True, on_delete=models.CASCADE)
+    message_likes = models.ManyToManyField(User, related_name='liked_posts')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 class Comment(models.Model):
     comment = models.TextField()
     comment_likes = models.ManyToManyField(User, related_name='comment_likes')
-    postUser = models.ForeignKey(User, related_name='user_comments', null=True, on_delete=models.CASCADE)
-    wallPost = models.ForeignKey(Message, related_name='post_comments', on_delete=models.CASCADE)
+    poster = models.ForeignKey(User, related_name='user_comments', null=True, on_delete=models.CASCADE)
+    wall_message = models.ForeignKey(Message, related_name='post_comments', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Login(models.Model):

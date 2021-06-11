@@ -86,8 +86,32 @@ def updateProfile(request, user_id):
 
     return redirect(f'/userProfile')
 
+def forum(request):
+    if 'user_id' not in  request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user,
+        'messages': Message.objects.all()
+    }
+    return render(request, 'forum.html', context)
+#post wall messages
+def message(request):
+    Message.objects.create(message = request.POST['mess'], poster = User.objects.get(id=request.session['user_id']))
+    return redirect('/forum/')
 
+def comment(request, id):
+    poster = User.objects.get(id=request.session['user_id'])
+    message = Message.objects.get(id=id)
+    Comment.objects.create(comment=request.POST['comment'], poster=poster, wall_message=message)
+    return redirect('/forum/')
 
+def add_like(request, id):
+    liked_message = Message.objects.get(id=id)
+    user_liking = User.objects.get(id=request.session['user_id'])
+    liked_message.message_likes.add(user_liking)
+
+    return redirect('/forum/')
 # log out of application
 def logout(request):
     request.session.clear()
