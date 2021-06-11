@@ -31,6 +31,7 @@ def users(request):
     )
     request.session['user_id'] = newUser.id
     return redirect('/dashboard/')
+
 # login validations
 def login(request):
     user = User.objects.filter(username = request.POST['username'])
@@ -44,6 +45,7 @@ def login(request):
     messages.error(request, 'The username is not in our system, please register for an account')
     return redirect('/')
 
+#shows the home and dashboard of all users
 def dashboard(request):
     if 'user_id' not in  request.session:
         return redirect('/')
@@ -53,6 +55,7 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
+#loads a user profile.
 def userProfile(request):
     if 'user_id' not in  request.session:
         return redirect('/')
@@ -61,6 +64,29 @@ def userProfile(request):
     'user': user,
     }
     return render(request, 'profile.html', context)
+
+#edit user profile
+def editProfile(request):
+    if 'user_id' not in  request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+    'user': user,
+    }
+    return render(request, 'editProfile.html', context)
+
+# updates edited information on profile and updates new image photo.
+def updateProfile(request, user_id):
+    userProfile = User.objects.get(id=request.session['user_id'])
+    userProfile.profile.location = request.POST['location']
+    userProfile.profile.favorite = request.POST['favorite']
+    userProfile.profile.about = request.POST['about']
+    userProfile.profile.image = request.FILES['image']
+    userProfile.save()
+
+    return redirect(f'/userProfile')
+
+
 
 # log out of application
 def logout(request):

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div>
     <div class = 'userProfile' id='userProfile'>
         <h2> {{ user.username }} </h2>
         <div class='media'>
@@ -10,5 +11,8 @@
         <h6>Fav Character: {{ user.profile.favorite}}</h6>
         <h6>About Me: {{ user.profile.about}}</h6>
     </div>
+    <div><a href='/editProfile/'>Edit Profile </a></div>
+</div>
+
 
 {% endblock content %}
