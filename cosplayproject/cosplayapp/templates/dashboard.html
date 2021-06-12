@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <!-- header of the top five users of the hour -->
 <header>TOP OF THE HOUR</header>
 <div class='wrap col-lg-12 mx-auto' id='container1'>
@@ -16,7 +17,7 @@
 <div class='container col-lg-12' id='container2'>
     <div class='row mx-auto' id='secondRow'>
         <div class='col-lg-8 justify-content-between' id='news'>
-            <h1 class='news1'>In the news...</h1>
+            <h1 class='news1'>Quote of the day..</h1>
             Testing area of what will be populated here... 
         </div>
         <div class='col-lg-3' id='newDay'>Welcome, {{user.username}}.<br>
@@ -31,6 +32,7 @@
         <h3>Get to know this Character...</h3>
 
 </div>
+<script src='{% static 'js/Quote.js' %}'></script>
 
 {% endblock content %}
 

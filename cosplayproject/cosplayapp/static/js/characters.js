@@ -12,7 +12,7 @@ var marCharac ={
                 characterMsg.innerHTML = 'Loading...';
             },
             complete: function() {
-                characterMsg.innerHTML = 'Loaded';
+                characterMsg.innerHTML = 'Get familiar';
             },
             success: function(data) {
                 footer.innerHTML = data.attributionHTML;
@@ -22,8 +22,11 @@ var marCharac ={
                 for(var i= 0; i < data.data.results.length; i++) {
                     var element = data.data.results[i];
                 
-                    string += "<div class='col-md-2'>";
-                    string += "<h6>" +element.name + "</h6>"
+                    string += "<div class='col-sm-2 '>";
+                    string += " <a href='"+element.urls[0].url+"'target='_blank'>";
+                    string += " <img src='"+element.thumbnail.path+"/portrait_medium."+element.thumbnail.extension+"'/>";
+                    string += "</a>"
+                    string += " <h6>" +element.name + "</h6>"
                     string += "</div>";
 
                     if ((i+1) % 6 == 0)  {
@@ -45,3 +48,4 @@ var marCharac ={
     }
 }
 marCharac.render();
+
