@@ -16,20 +16,23 @@ var marCharac ={
             },
             success: function(data) {
                 footer.innerHTML = data.attributionHTML;
-                var string='';
+                var string="";
                 string += "<div class='row'>"
 
                 for(var i= 0; i < data.data.results.length; i++) {
                     var element = data.data.results[i];
                 
-                    string += "<div class='cold-md-3'>";
+                    string += "<div class='col-md-2'>";
+                    string += "<h6>" +element.name + "</h6>"
                     string += "</div>";
 
-                    if ((i+1) % 4 == 0)  {
+                    if ((i+1) % 6 == 0)  {
                         string += "</div>";
                         string += "<div class='row'>";
                     }
                 }
+
+                marvelImage.innerHTML = string;
 
             },
             error: function() {
