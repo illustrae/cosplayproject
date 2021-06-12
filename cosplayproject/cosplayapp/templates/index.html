@@ -14,41 +14,33 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-   
+
         <title></title>
 
 </head>
 <!--Repository link (https://github.com/illustrae/cosplayproject.git)-->
 <body>
-    <div class='main'>
-        <nav class='navbar justify-content-between'>
-            <a class='navbar-brand'>COSPLAY CENTRAL</a>
+    <div class='login' id='login'>
+        <div class='container-top'>
+            <h4>Login</h4>
             <form class='form-inline' action='/login/' method='POST'>
-                {% csrf_token %}
-                    
-                    <input class='form-control mr-sm-2' name='username' id='username' type='text' placeholder='username'>
-                    <label for='username'> <a href='register'> Sign up </a></label>
-                    <input class='form-control mr-sm-2' name='password' type='password' id='password' placeholder='Password'>
-                    <label for='password'> <a href=''> Forgot password? </a></label>
-                    <button class='btn btn-outline-light my-2 my-sm-0' type='submit'> Login </button>
-                    <!-- {% if messages %} -->
-                        <!-- <section class="messages"> -->
-                        <!-- {% for message in messages %} -->
-                            <!-- <h4 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4> -->
-                    <!-- {% endfor %} -->
-                        <!-- </section> -->
-                <!-- {% endif %} -->
+            {% csrf_token %}
+            <span>
+                <input class='form-control mr-sm-2' name='username' id='username' type='text' placeholder='username'><label for='username'><br>
+                <input class='form-control mr-sm-2' name='password' type='password' id='password' placeholder='Password'> <label for='password'>
+
+                <button class='btn btn-outline-light my-2 my-sm-2' type='submit'> Login </button> </span>
             </form>
-        </nav>
-    </div>
-    </div>
-    <div class='jumbotron jumbotron-fluid'>
-        <div class='container'>
-            <img class='mx-auto d-block img-fluid city01' id='city01' src='./Images/city1.png' alt='cosplayLogin'>
+            <Section>
+                <div class='regPass'>
+                    <a href='register'> Sign up </a></label>/<a href=''> Forgot password? 
+                    </a>
+                </div>
+            </Section>
         </div>
     </div>
-    <div class='footer'>
-        <footer> this is going to be a footer </footer>
-    </div>    
+
+
+
 </body>
 </html>

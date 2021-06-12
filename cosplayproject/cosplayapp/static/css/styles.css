@@ -4,15 +4,33 @@
     color: white;
     background-color: #140038;
     font-family: Poppins;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 .navbar, .container {
     background-color: #140038;
 
 }
+.container-top {
+    background-color: #140038;
+    width: auto;
+    margin-left: 150px;
+    margin-top: 250px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    
+}
+.login {
+    background: url('/static/images/background.jpeg') center;
+
+}
+
 .footer footer {
     text-align: center;
     padding: 5px;
-    padding-top: 45px;
+    padding-top: 15px;
 
 }
 .main label {
@@ -54,13 +72,9 @@ header {
     color: gold;
     font-weight: 600;
 }
+
 /* Dashboard divs */
 
-.wrap {
-
-    display: flex;
-    width: 100%;
-}
 #firstRow {
     width: 100%;
     display: flexbox;
