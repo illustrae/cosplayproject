@@ -4,7 +4,7 @@
 
 <div class='mainWall' id='mainWall'>
         <h2 id='forWall'>The Board</h2>
-        <!-- Post a message input form -->
+        <!-- Post a message input form top of page-->
         <form action='/wall' method=POST id='wall1'>
         {% csrf_token %}
         <textarea rows='5' type="text" label='Write' name='mess' id='wallP'>Write a message..</textarea>
@@ -13,28 +13,34 @@
 
 
 <div id="posts">
-    {% for post in messages %}
+    {% for post in messages reversed %}
         <div class='one_post'>
         <p class='post'>{{post.message}}</p>
         </div>
         <div id='posted1'>
-            <p class='poster'>{{post.user_likes.count}} <a href='/like/{{post.id}}'> Like </a>
-        posted by: <a href='/userProfile/{{post.poster.id}}'> {{post.poster.username}} </a></p>
-            
+            <p class='poster' style='text-align:left;'>{{post.user_likes.count}} <a href='/like/{{post.id}}'> Like </a>
+                <span style='float:right;font-size:12px;'>
+                    posted by: <a href='/userProfile/{{post.poster.id}}'> {{post.poster.username}} </a>
+                </span>   
+            </p>
 
-            
+    <!-- comments -->
+<div id='comments1'>
+    {% for comment in post.post_comments.all %}
+        <p class='comments2'style='padding-left:15px;'> {{comment.comment}}</p>
+        <p class='comments3' style='text-align:right;font-size:12px'> comment by: <a href='/userProfile/{{post.poster.id}}'>{{comment.poster.username}}</a></p> 
+        <a href="/delete/{{comment.id}}">Delete</a>
+    {% endfor %}
+</div>
 
-        <form action='/add_comment/{{post.id}}' method=POST>
-            {% csrf_token %}
-            Comment: <input type='text' name='comment'>
-            <input type='submit' value='submit'>
-        </form>
+<!-- comment post form -->
+<div id='comments4'>
+    <form action='/add_comment/{{post.id}}' method=POST id='wall2'>
+    {% csrf_token %}
+    <textarea rows='2' type='text' name='comment' id='commentP'>Leave a comment</textarea>
+    <input type='submit' value='submit' id='commentbtn'>
+            </form>
 
-            {% for comment in post.post_comments.all %}
-                <p> {{comment.comment}}</p>
-                <p> poster: {{comment.poster.username}}</p>
-                <a href="/delete/{{comment.id}}">Delete</a>
-            {% endfor %}
         </div>
     {% endfor %}
 </div>
