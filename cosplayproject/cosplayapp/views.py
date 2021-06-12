@@ -113,7 +113,7 @@ def add_like(request, id):
 
     return redirect('/forum/')
 
-def delete(redirect, user_id):
+def delete(redirect, id):
     destroyed = Comment.objects.get(id=id)
     destroyed.delete()
     return redirect('/forum/')
