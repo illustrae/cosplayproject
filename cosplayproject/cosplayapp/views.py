@@ -85,7 +85,7 @@ def updateProfile(request, user_id):
     userProfile.save()
 
     return redirect(f'/userProfile')
-
+#forum wall view
 def forum(request):
     if 'user_id' not in  request.session:
         return redirect('/')
@@ -99,7 +99,7 @@ def forum(request):
 def message(request):
     Message.objects.create(message = request.POST['mess'], poster = User.objects.get(id=request.session['user_id']))
     return redirect('/forum/')
-
+#post comments
 def comment(request, id):
     poster = User.objects.get(id=request.session['user_id'])
     message = Message.objects.get(id=id)
