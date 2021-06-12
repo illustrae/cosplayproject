@@ -118,7 +118,14 @@ def delete(redirect, id):
     destroyed.delete()
     return redirect('/forum/')
 
-
+def character(request):
+    if 'user_id' not in  request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user,
+    }
+    return render(request, 'characters.html', context)
 # log out of application
 def logout(request):
     request.session.clear()
