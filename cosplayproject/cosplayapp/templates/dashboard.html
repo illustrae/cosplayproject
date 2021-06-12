@@ -1,26 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+
 <!-- header of the top five users of the hour -->
-<header>TOP OF THE HOUR</header>
-<div class='wrap col-lg-12 mx-auto' id='container1'>
-    <div class='row justify-content-between mx-auto' id='firstRow'>
-        <div class="col-lg-2" id='cosUser'>User Image</div>
-        <div class="col-lg-2" id='cosUser'>User Image</div>
-        <div class="col-lg-2" id='cosUser' >User Image</div>
-        <div class="col-lg-2" id='cosUser'>User Image</div>
-        <div class="col-lg-2" id='cosUser'>User Image</div>
-    </div>
-</div>
+<!-- <header>TOP OF THE HOUR</header> -->
+<!-- <div class='wrap col-lg-12 mx-auto' id='container1'> -->
+    <!-- <div class='row justify-content-between mx-auto' id='firstRow'> -->
+        <!-- <div class="col-lg-2" id='cosUser'>User Image</div> -->
+        <!-- <div class="col-lg-2" id='cosUser'>User Image</div> -->
+        <!-- <div class="col-lg-2" id='cosUser' >User Image</div> -->
+        <!-- <div class="col-lg-2" id='cosUser'>User Image</div> -->
+        <!-- <div class="col-lg-2" id='cosUser'>User Image</div> -->
+    <!-- </div> -->
+<!-- </div> -->
 
 <!-- In the news section and the new members of the day. -->
 <div class='container col-lg-12' id='container2'>
     <div class='row mx-auto' id='secondRow'>
         <div class='col-lg-8 justify-content-between' id='news'>
-            <h1 class='news1'>Quote of the day..</h1>
-            Testing area of what will be populated here... 
+            <h1 class='news1'></h1>
+            adding an api to this area
+            <!-- <button id='newsbutton'> Get Quote </button> -->
         </div>
-        <div class='col-lg-3' id='newDay'>Welcome, {{user.username}}.<br>
+        <div class='col-lg-3' id='newDay'>Welcome, a random new user.<br>
             <div class='container' id='newDayImage'>
                 <img src='https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png' class='imageNew'>
             </div>
@@ -29,10 +31,10 @@
 </div>
 <!-- jumbotron for character info -->
 <div class='jumbotron'>
-        <h3>Get to know this Character...</h3>
+        <h3>Unique Marvel Information</h3>
 
 </div>
-<script src='{% static 'js/Quote.js' %}'></script>
+
 
 {% endblock content %}
 
