@@ -122,15 +122,17 @@ def message(request):
     Message.objects.create(message=request.POST['mess'], poster=User.objects.get(
         id=request.session['user_id']))
     return redirect('/forum/')
+
+
 # post comments
-
-
 def comment(request, id):
     poster = User.objects.get(id=request.session['user_id'])
     message = Message.objects.get(id=id)
     Comment.objects.create(
         comment=request.POST['comment'], poster=poster, wall_message=message)
     return redirect('/forum/')
+
+# like posts
 
 
 def add_like(request, id):
@@ -139,6 +141,8 @@ def add_like(request, id):
     liked_message.user_likes.add(user_liking)
 
     return redirect('/forum/')
+
+# delete comments
 
 
 def delete(redirect, id):
@@ -155,9 +159,22 @@ def character(request):
         'user': user,
     }
     return render(request, 'characters.html', context)
+
 # log out of application
 
 
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+# Views of Event
+
+
+def events(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user,
+    }
+    return render(request, 'event.html', context)
